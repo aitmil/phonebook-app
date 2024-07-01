@@ -1,45 +1,32 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
-import { register } from '../../redux/auth/operations';
-import { RegistrationSchema } from '../../js/validation';
-import css from './RegistrationForm.module.css';
+import { logIn } from '../../redux/auth/operations';
+import { LoginSchema } from '../../ts/validation';
+import css from './LoginForm.module.css';
 
 export default function LoginForm() {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    dispatch(register(values))
+    dispatch(logIn(values))
       .unwrap()
       .catch(() => {
-        toast.error('Registration error!');
+        toast.error('Authorization error! Please try again.');
       });
     actions.resetForm();
   };
 
   return (
     <Formik
-      initialValues={{ name: '', email: '', password: '' }}
-      validationSchema={RegistrationSchema}
+      initialValues={{ email: '', password: '' }}
+      validationSchema={LoginSchema}
       onSubmit={handleSubmit}
     >
       <Form
         className={css.form}
         autoComplete='off'
       >
-        <label className={css.label}>
-          Username
-          <Field
-            className={css.input}
-            type='text'
-            name='name'
-          />
-        </label>
-        <ErrorMessage
-          className={css.error}
-          name='name'
-          component='span'
-        />
         <label className={css.label}>
           Email
           <Field
@@ -70,7 +57,7 @@ export default function LoginForm() {
           className={css.btn}
           type='submit'
         >
-          Sign up
+          Login
         </button>
       </Form>
     </Formik>

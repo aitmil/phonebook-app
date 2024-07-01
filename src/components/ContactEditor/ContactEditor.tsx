@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import toast from 'react-hot-toast';
 import css from './ContactEditor.module.css';
 import { addContact } from '../../redux/contacts/operations';
-import { ContactSchema } from '../../js/validation';
+import { ContactSchema } from '../../ts/validation';
 
 export default function ContactForm() {
   const initialValues = { name: '', number: '' };

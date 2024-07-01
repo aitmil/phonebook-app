@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { FaHandHoldingHeart } from 'react-icons/fa';
-import PageTitle from '../../components/PageTitle/PageTitle';
+import PageTitle from '../PageTitle/PageTitle';
 import css from './HomeContent.module.css';
 
 export default function HomeContent() {

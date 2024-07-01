@@ -11,7 +11,7 @@ import {
   selectEditModalIsOpen,
 } from '../../redux/modal/selectors';
 import { editContact } from '../../redux/contacts/operations';
-import { ContactSchema } from '../../js/validation';
+import { ContactSchema } from '../../ts/validation';
 import css from './ModalEdit.module.css';
 
 Modal.setAppElement('#root');
