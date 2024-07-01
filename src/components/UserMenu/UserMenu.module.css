@@ -1,0 +1,31 @@
+.wrapper {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.text {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.btn {
+  padding: 12px 14px;
+  color: inherit;
+  background-color: transparent;
+  border: 2px solid var(--accent-green-color);
+  border-radius: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 24px;
+  box-shadow: 0 4px 8px var(--shadow);
+  transition: box-shadow var(--transition), border var(--transition),
+    color var(--transition);
+}
+
+.btn:hover,
+.btn:focus {
+  border: 2px solid var(--accent-orange-color);
+  color: var(--accent-orange-color);
+  box-shadow: var(--accent-shadow);
+}

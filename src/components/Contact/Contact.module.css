@@ -1,0 +1,53 @@
+.contactBox {
+  display: flex;
+  gap: 14px;
+  flex-direction: column;
+}
+
+.nameBox,
+.numberBox {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.name {
+  font-weight: normal;
+  font-size: 28px;
+}
+
+.number {
+  font-size: 24px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 14px;
+  font-size: 18px;
+  color: var(--light-color);
+  background-color: var(--background-dark-color);
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0 2px 4px var(--shadow);
+  transition: box-shadow var(--transition), color var(--transition);
+}
+
+.btn:hover,
+.btn:focus {
+  box-shadow: 0 4px 8px var(--accent-shadow);
+  background-color: var(--accent-red-color);
+}
+
+.editBtn:hover,
+.editBtn:focus {
+  background-color: var(--accent-green-color);
+}
+
+.btnWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

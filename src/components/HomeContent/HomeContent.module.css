@@ -1,0 +1,25 @@
+.content {
+  padding-left: 24px;
+  text-align: center;
+}
+
+.text {
+  margin-top: 24px;
+  font-size: 24px;
+}
+
+.link {
+  text-transform: uppercase;
+  font-weight: 700;
+  color: inherit;
+  transition: color var(--transition);
+}
+
+.icon {
+  margin-top: 24px;
+}
+
+.link:hover,
+.link:focus {
+  color: var(--accent-orange-color);
+}

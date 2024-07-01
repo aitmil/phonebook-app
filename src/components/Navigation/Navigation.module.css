@@ -1,0 +1,20 @@
+.nav {
+  display: flex;
+  gap: 120px;
+}
+
+.link {
+  font-weight: 600;
+  font-size: 24px;
+  color: inherit;
+  transition: color var(--transition);
+}
+
+.link:hover,
+.link:focus {
+  color: var(--accent-orange-color);
+}
+
+.active {
+  color: var(--accent-orange-color);
+}

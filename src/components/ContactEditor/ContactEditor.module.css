@@ -1,0 +1,54 @@
+.form {
+  max-width: 400px;
+  margin: 0 auto 36px;
+  border: 1px solid var(--background-dark-color);
+  border-radius: 6px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px #00000066;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+.input {
+  border: 1px solid var(--background-dark-color);
+  border-radius: 4px;
+  padding: 8px;
+  font-size: larger;
+  background-color: inherit;
+  box-shadow: 0 2px 4px var(--shadow);
+  transition: box-shadow var(--transition);
+}
+
+.input:hover,
+.input:focus {
+  box-shadow: 0 4px 8px var(--accent-shadow);
+}
+
+.error {
+  color: var(--accent-red-color);
+}
+
+.btn {
+  padding: 10px 14px;
+  font-size: 18px;
+  border-radius: 6px;
+  width: 200px;
+  align-self: center;
+  color: var(--light-color);
+  background-color: var(--background-dark-color);
+  border: none;
+  box-shadow: 0 4px 8px var(--secondary-shadow);
+  transition: box-shadow var(--transition),
+    background-color 250ms var(--transition);
+}
+
+.btn:hover {
+  box-shadow: 0 8px 16px var(--accent-secondary-shadow);
+  background-color: #169c95;
+}

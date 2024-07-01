@@ -1,0 +1,11 @@
+.img {
+  height: 90vh;
+}
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-top: 100px;
+  background-color: #ffff;
+}

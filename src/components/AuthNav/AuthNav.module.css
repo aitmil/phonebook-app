@@ -1,0 +1,39 @@
+.registerWrapper {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.login {
+  padding: 12px 84px;
+  border: 2px solid var(--accent-green-color);
+  border-radius: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 24px;
+  box-shadow: 0 4px 8px var(--shadow);
+  transition: box-shadow var(--transition), border var(--transition);
+}
+
+.link {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 24px;
+  color: inherit;
+  transition: color var(--transition);
+}
+
+.login:hover,
+.login:focus {
+  box-shadow: 0 8px 16px var(--accent-shadow);
+  border: 2px solid var(--accent-orange-color);
+}
+
+.link:hover,
+.link:focus {
+  color: var(--accent-orange-color);
+}
+
+.text {
+  font-size: 24px;
+}

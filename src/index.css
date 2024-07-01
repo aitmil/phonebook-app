@@ -1,0 +1,84 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  letter-spacing: -0.02em;
+  color: var(--text-dark-color);
+  background-color: var(--light-color);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* ===== colors ===== */
+
+  --background-dark-color: #39536c;
+  --text-dark-color: #2e3d50;
+  --light-color: #ebedf0;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --secondary-shadow: rgba(0, 0, 0, 0.2);
+  --accent-red-color: #db2f47;
+  --accent-green-color: #169c95;
+  --accent-orange-color: #fe7733;
+  --accent-shadow: rgba(0, 0, 0, 0.2);
+  --accent-secondary-shadow: rgba(0, 0, 0, 0.3);
+
+  /* ======= transition ===== */
+  --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ======== Reset styles ======== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a:focus,
+input:focus,
+textarea:focus,
+a:active,
+input:active,
+textarea:active {
+  outline: none;
+}
+
+a,
+input,
+textarea {
+  outline: none;
+}
+
+/* =========================== */

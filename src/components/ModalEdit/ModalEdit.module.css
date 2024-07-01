@@ -1,0 +1,119 @@
+.modalEdit {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 40;
+  transform: translate(-50%, -50%);
+  padding: 40px 22px;
+  min-width: 343px;
+  overflow: hidden;
+  background-color: var(--light-color);
+  border: 1px solid var(--shadow);
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 44px;
+}
+
+.overlayEdit {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 15, 16, 0.6);
+}
+
+.contactBox {
+  display: flex;
+  gap: 14px;
+  flex-direction: column;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 14px;
+  width: 80px;
+  font-size: 18px;
+  color: var(--light-color);
+  background-color: var(--background-dark-color);
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0 2px 4px var(--shadow);
+  transition: box-shadow var(--transition), color var(--transition);
+}
+
+.btn:hover,
+.btn:focus {
+  box-shadow: 0 4px 8px var(--accent-shadow);
+  background-color: var(--accent-red-color);
+}
+
+.editBtn:hover,
+.editBtn:focus {
+  background-color: var(--accent-green-color);
+}
+
+.btnWrapper {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+  justify-content: space-around;
+}
+
+.input {
+  border: 1px solid var(--background-dark-color);
+  border-radius: 4px;
+  padding: 8px;
+  margin-left: 6px;
+  color: inherit;
+  font-size: larger;
+  background-color: inherit;
+  box-shadow: 0 2px 4px var(--shadow);
+  transition: box-shadow var(--transition);
+}
+
+.input:hover,
+.input:focus {
+  box-shadow: 0 4px 8px var(--accent-shadow);
+}
+
+.error {
+  color: var(--accent-red-color);
+}
+
+/* .delText {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.delBtnWrapper {
+  display: flex;
+  gap: 44px;
+}
+
+.delBtn {
+  color: var(--light-color);
+  background-color: var(--accent-red-color);
+  text-transform: uppercase;
+  padding: 12px 14px;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px var(--shadow);
+  transition: box-shadow var(--transition), color var(--transition);
+}
+
+.delBtn:hover,
+.delBtn:focus {
+  box-shadow: 0 4px 8px var(--accent-shadow);
+}
+
+.btnNo {
+  background-color: var(--accent-green-color);
+} */

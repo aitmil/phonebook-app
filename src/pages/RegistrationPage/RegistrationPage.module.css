@@ -1,0 +1,13 @@
+.container {
+  background-color: var(--light-color);
+  border: 1px solid var(--background-dark-color);
+  border-radius: 8px;
+  padding: 32px;
+  max-width: 500px;
+  transform: translateX(-50%);
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  box-shadow: 0 4px 8px var(--secondary-shadow);
+  transition: box-shadow var(--transition);
+}
