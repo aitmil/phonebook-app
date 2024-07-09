@@ -1,7 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { register, logIn, logOut, refreshUser } from './operations';
+import {AuthState} from "./authTypes"
 
-const handlePending = state => {
+const initialState: AuthState = {
+  user: {
+    name: null,
+    email: null,
+  },
+  token: null,
+  isLoggedIn: false,
+  isLoading: false,
+  isRefreshing: false,
+  error: null,
+};
+
+const handlePending = state: => {
   state.isLoading = true;
   state.error = null;
 };
@@ -13,17 +26,7 @@ const handleRejected = (state, action) => {
 
 const authSlice = createSlice({
   name: 'auth',
-  initialState: {
-    user: {
-      name: null,
-      email: null,
-    },
-    token: null,
-    isLoggedIn: false,
-    isLoading: false,
-    isRefreshing: false,
-    error: null,
-  },
+  initialState,
   extraReducers: builder =>
     builder
       .addCase(register.pending, handlePending)
