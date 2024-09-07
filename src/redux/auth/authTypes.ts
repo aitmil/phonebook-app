@@ -9,3 +9,14 @@ export interface AuthState {
   isRefreshing: boolean;
   error: null | string;
 }
+
+export interface NewUser {
+  name: string;
+  email: string;
+  password: string;
+}
+
+export interface UserData {
+  email: string;
+  password: string;
+}
