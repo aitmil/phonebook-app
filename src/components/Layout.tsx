@@ -1,7 +1,8 @@
 import { Toaster } from 'react-hot-toast';
 import AppBar from './AppBar/AppBar';
+import { Props } from '../ts/types';
 
-export default function Layout({ children }) {
+export default function Layout({ children }: Props) {
   return (
     <>
       <AppBar />

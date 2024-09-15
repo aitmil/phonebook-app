@@ -1,14 +1,17 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
 import toast from 'react-hot-toast';
+
 import { register } from '../../redux/auth/operations';
 import { RegistrationSchema } from '../../ts/validation';
+import { useAppDispatch } from '../../ts/hooks';
+import { NewUser } from '../../ts/types';
 import css from './RegistrationForm.module.css';
 
-export default function LoginForm() {
-  const dispatch = useDispatch();
+const LoginForm: React.FC = () => {
+  const dispatch = useAppDispatch();
 
-  const handleSubmit = (values, actions) => {
+  const handleSubmit = (values: NewUser, actions: FormikHelpers<NewUser>) => {
     dispatch(register(values))
       .unwrap()
       .catch(() => {
@@ -75,4 +78,6 @@ export default function LoginForm() {
       </Form>
     </Formik>
   );
-}
+};
+
+export default LoginForm;

@@ -1,11 +1,15 @@
-import { GiTerror } from "react-icons/gi";
-import { IoReload } from "react-icons/io5";
-import css from "./Error.module.css";
+import React from 'react';
+import { GiTerror } from 'react-icons/gi';
+import { IoReload } from 'react-icons/io5';
+import css from './Error.module.css';
 
-export default function Loader() {
+const Loader: React.FC = () => {
   return (
     <div className={css.errorBox}>
-      <GiTerror size={48} className={css.iconMain} />
+      <GiTerror
+        size={48}
+        className={css.iconMain}
+      />
       <div className={css.error}>
         <p className={css.text}>
           Ooops... Something went wrong! Try to reload this page
@@ -14,4 +18,6 @@ export default function Loader() {
       </div>
     </div>
   );
-}
+};
+
+export default Loader;

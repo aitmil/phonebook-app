@@ -1,9 +1,10 @@
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaHandHoldingHeart } from 'react-icons/fa';
 import PageTitle from '../PageTitle/PageTitle';
 import css from './HomeContent.module.css';
 
-export default function HomeContent() {
+const HomeContent: React.FC = () => {
   return (
     <div className={css.content}>
       <PageTitle>Phonebook manager welcome page</PageTitle>
@@ -23,4 +24,6 @@ export default function HomeContent() {
       </p>
     </div>
   );
-}
+};
+
+export default HomeContent;
