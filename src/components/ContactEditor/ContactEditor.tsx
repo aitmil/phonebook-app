@@ -1,17 +1,24 @@
+import React from 'react';
 import { useId } from 'react';
-import { useDispatch } from 'react-redux';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
 import toast from 'react-hot-toast';
+
 import css from './ContactEditor.module.css';
+
 import { addContact } from '../../redux/contacts/operations';
 import { ContactSchema } from '../../ts/validation';
+import { useAppDispatch } from '../../ts/hooks';
+import { ContactFormValues } from '../../ts/types';
 
-export default function ContactForm() {
+const ContactForm: React.FC = () => {
   const initialValues = { name: '', number: '' };
   const fieldId = useId();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const handleSubmit = (values, actions) => {
+  const handleSubmit = (
+    values: ContactFormValues,
+    actions: FormikHelpers<ContactFormValues>
+  ) => {
     dispatch(addContact(values))
       .unwrap()
       .then(() => {
@@ -36,6 +43,7 @@ export default function ContactForm() {
             className={css.input}
             name='name'
             id={`${fieldId}-name`}
+            type='text'
           />
           <ErrorMessage
             className={css.error}
@@ -50,6 +58,7 @@ export default function ContactForm() {
             className={css.input}
             name='number'
             id={`${fieldId}-number`}
+            type='tel'
           />
           <ErrorMessage
             className={css.error}
@@ -67,4 +76,6 @@ export default function ContactForm() {
       </Form>
     </Formik>
   );
-}
+};
+
+export default ContactForm;

@@ -1,28 +1,40 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik';
 import toast from 'react-hot-toast';
 import Modal from 'react-modal';
 import clsx from 'clsx';
+
 import { IoPerson } from 'react-icons/io5';
 import { FaPhone } from 'react-icons/fa6';
+
 import { closeEditModal } from '../../redux/modal/slice';
 import {
   selectActiveContact,
   selectEditModalIsOpen,
 } from '../../redux/modal/selectors';
 import { editContact } from '../../redux/contacts/operations';
+
 import { ContactSchema } from '../../ts/validation';
+import { useAppDispatch, useAppSelector } from '../../ts/hooks';
 import css from './ModalEdit.module.css';
+import { EditFormValues } from '../../ts/types';
 
 Modal.setAppElement('#root');
 
-export default function ModalEdit() {
-  const dispatch = useDispatch();
+const ModalEdit: React.FC = () => {
+  const dispatch = useAppDispatch();
 
-  const contactToEdit = useSelector(selectActiveContact);
-  const isOpen = useSelector(selectEditModalIsOpen);
+  const contactToEdit = useAppSelector(selectActiveContact);
+  const isOpen = useAppSelector(selectEditModalIsOpen);
 
-  const handleEdit = (values, actions) => {
+  if (!isOpen || !contactToEdit) {
+    return null;
+  }
+
+  const handleEdit = (
+    values: EditFormValues,
+    actions: FormikHelpers<EditFormValues>
+  ) => {
     dispatch(
       editContact({
         id: contactToEdit.id,
@@ -43,7 +55,8 @@ export default function ModalEdit() {
 
   if (!contactToEdit) return null;
 
-  const initialValues = {
+  const initialValues: EditFormValues = {
+    id: contactToEdit.id,
     name: contactToEdit.name || '',
     number: contactToEdit.number || '',
   };
@@ -109,4 +122,6 @@ export default function ModalEdit() {
       </Formik>
     </Modal>
   );
-}
+};
+
+export default ModalEdit;

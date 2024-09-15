@@ -1,24 +1,32 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../ts/hooks';
+import { ContactProps } from '../../ts/types';
+
 import { IoPerson } from 'react-icons/io5';
 import { FaPhone } from 'react-icons/fa6';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { MdOutlineEdit } from 'react-icons/md';
+
 import { openDeleteModal, openEditModal } from '../../redux/modal/slice';
 import { selectContactById } from '../../redux/contacts/selectors';
+
 import clsx from 'clsx';
 import css from './Contact.module.css';
 
-export default function Contact({ contact: { id, name, number } }) {
-  const dispatch = useDispatch();
+const Contact: React.FC<ContactProps> = ({ contact: { id, name, number } }) => {
+  const dispatch = useAppDispatch();
 
-  const activeContact = useSelector(state => selectContactById(state, id));
+  const activeContact = useAppSelector(state => selectContactById(state, id));
 
   const handleEditClick = () => {
-    dispatch(openEditModal(activeContact));
+    if (activeContact) {
+      dispatch(openEditModal(activeContact));
+    }
   };
 
   const handleDeleteClick = () => {
-    dispatch(openDeleteModal(activeContact));
+    if (activeContact) {
+      dispatch(openDeleteModal(activeContact));
+    }
   };
 
   return (
@@ -53,4 +61,6 @@ export default function Contact({ contact: { id, name, number } }) {
       </div>
     </>
   );
-}
+};
+
+export default Contact;

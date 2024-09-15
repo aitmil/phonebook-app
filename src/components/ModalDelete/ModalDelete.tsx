@@ -1,24 +1,26 @@
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 import toast from 'react-hot-toast';
 import Modal from 'react-modal';
 import clsx from 'clsx';
+
 import { closeDeleteModal } from '../../redux/modal/slice';
 import {
   selectDeleteModalIsOpen,
   selectActiveContact,
 } from '../../redux/modal/selectors';
 import { deleteContact } from '../../redux/contacts/operations';
+import { useAppDispatch, useAppSelector } from '../../ts/hooks';
 import css from './ModalDelete.module.css';
 
 Modal.setAppElement('#root');
 
-export default function ModalDelete() {
-  const dispatch = useDispatch();
+const ModalDelete: React.FC = () => {
+  const dispatch = useAppDispatch();
 
-  const contactToDelete = useSelector(selectActiveContact);
-  const isOpen = useSelector(selectDeleteModalIsOpen);
+  const contactToDelete = useAppSelector(selectActiveContact);
+  const isOpen = useAppSelector(selectDeleteModalIsOpen);
 
-  if (!isOpen) {
+  if (!isOpen || !contactToDelete) {
     return null;
   }
 
@@ -63,4 +65,6 @@ export default function ModalDelete() {
       </div>
     </Modal>
   );
-}
+};
+
+export default ModalDelete;
