@@ -1,14 +1,21 @@
 import { createSelector } from '@reduxjs/toolkit';
-
 import { selectNameFilter } from '../filter/selectors';
+import { RootState } from '../store';
+import { Contact } from './contactsTypes';
 
-export const selectContacts = state => state.contacts.items;
+export const selectContacts = (state: RootState): Contact[] =>
+  state.contacts.items;
 
-export const selectLoading = state => state.contacts.loading;
+export const selectLoading = (state: RootState): boolean =>
+  state.contacts.loading;
 
-export const selectError = state => state.contacts.error;
+export const selectError = (state: RootState): string | null =>
+  state.contacts.error;
 
-export const selectContactById = (state, contactId) => {
+export const selectContactById = (
+  state: RootState,
+  contactId: string
+): Contact | undefined => {
   return state.contacts.items.find(contact => contact.id === contactId);
 };
 
