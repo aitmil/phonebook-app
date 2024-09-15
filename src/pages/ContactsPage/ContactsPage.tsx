@@ -1,5 +1,4 @@
-import { useEffect, lazy } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, lazy, Suspense } from 'react';
 import PageTitle from '../../components/PageTitle/PageTitle';
 import ContactEditor from '../../components/ContactEditor/ContactEditor';
 import SearchBox from '../../components/SearchBox/SearchBox';
@@ -7,16 +6,17 @@ import Loader from '../../components/Loader/Loader';
 import Error from '../../components/Error/Error';
 import { fetchContacts } from '../../redux/contacts/operations';
 import { selectError, selectLoading } from '../../redux/contacts/selectors';
+import { useAppDispatch, useAppSelector } from '../../ts/hooks';
 import css from './ContactsPage.module.css';
 
-const ContactList = lazy(() =>
-  import('../../components/ContactList/ContactList')
+const ContactList = lazy(
+  () => import('../../components/ContactList/ContactList')
 );
 
 export default function ContactsPage() {
-  const dispatch = useDispatch();
-  const isLoading = useSelector(selectLoading);
-  const isError = useSelector(selectError);
+  const dispatch = useAppDispatch();
+  const isLoading = useAppSelector(selectLoading);
+  const isError = useAppSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -32,7 +32,9 @@ export default function ContactsPage() {
         <SearchBox />
         {isLoading && <Loader />}
         {isError && <Error />}
-        <ContactList />
+        <Suspense fallback={<Loader />}>
+          <ContactList />
+        </Suspense>
       </div>
     </main>
   );

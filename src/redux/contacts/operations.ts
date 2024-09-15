@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Contact } from './contactsTypes';
+import { Contact } from '../../ts/types';
 
 export const fetchContacts = createAsyncThunk<
   Contact[],

@@ -6,7 +6,7 @@ import {
   editContact,
 } from './operations';
 import { logOut } from '../auth/operations';
-import { ContactsState, Contact } from './contactsTypes';
+import { ContactsState, Contact } from '../../ts/types';
 
 const initialState: ContactsState = {
   items: [],

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Contact } from '../contacts/contactsTypes';
+import { Contact } from '../../ts/types';
 
 interface ModalTypes {
   editModalIsOpen: boolean;

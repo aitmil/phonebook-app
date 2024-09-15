@@ -1,7 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { selectNameFilter } from '../filter/selectors';
 import { RootState } from '../store';
-import { Contact } from './contactsTypes';
+import { Contact } from '../../ts/types';
 
 export const selectContacts = (state: RootState): Contact[] =>
   state.contacts.items;

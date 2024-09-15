@@ -1,5 +1,5 @@
 import { RootState } from '../store';
-import { Contact } from '../contacts/contactsTypes';
+import { Contact } from '../../ts/types';
 
 export const selectEditModalIsOpen = (state: RootState): boolean =>
   state.modal.editModalIsOpen;

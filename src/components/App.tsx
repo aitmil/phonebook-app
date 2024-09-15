@@ -27,7 +27,7 @@ export default function App() {
     <Loader />
   ) : (
     <Layout>
-      <Suspense fallback={null}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route
             path='/'
