@@ -1,14 +1,23 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Contact } from '../contacts/contactsTypes';
+
+interface ModalTypes {
+  editModalIsOpen: boolean;
+  deleteModalIsOpen: boolean;
+  activeContact: null | Contact;
+}
+
+const initialState: ModalTypes = {
+  editModalIsOpen: false,
+  deleteModalIsOpen: false,
+  activeContact: null,
+};
 
 const modalSlice = createSlice({
   name: 'modal',
-  initialState: {
-    editModalIsOpen: false,
-    deleteModalIsOpen: false,
-    activeContact: null,
-  },
+  initialState,
   reducers: {
-    openEditModal: (state, action) => {
+    openEditModal: (state, action: PayloadAction<Contact>) => {
       state.editModalIsOpen = true;
       state.activeContact = action.payload;
     },
@@ -16,7 +25,7 @@ const modalSlice = createSlice({
       state.editModalIsOpen = false;
       state.activeContact = null;
     },
-    openDeleteModal: (state, action) => {
+    openDeleteModal: (state, action: PayloadAction<Contact>) => {
       state.deleteModalIsOpen = true;
       state.activeContact = action.payload;
     },

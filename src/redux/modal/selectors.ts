@@ -1,5 +1,11 @@
-export const selectEditModalIsOpen = state => state.modal.editModalIsOpen;
+import { RootState } from '../store';
+import { Contact } from '../contacts/contactsTypes';
 
-export const selectDeleteModalIsOpen = state => state.modal.deleteModalIsOpen;
+export const selectEditModalIsOpen = (state: RootState): boolean =>
+  state.modal.editModalIsOpen;
 
-export const selectActiveContact = state => state.modal.activeContact;
+export const selectDeleteModalIsOpen = (state: RootState): boolean =>
+  state.modal.deleteModalIsOpen;
+
+export const selectActiveContact = (state: RootState): Contact | null =>
+  state.modal.activeContact;
