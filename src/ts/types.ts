@@ -24,7 +24,7 @@ export interface AuthState {
     name: null | string;
     email: null | string;
   };
-  token: null | string;
+  accessToken: null | string;
   isLoggedIn: boolean;
   isLoading: boolean;
   isRefreshing: boolean;
