@@ -18,7 +18,11 @@ export const LoginSchema = Yup.object().shape({
   password: Yup.string()
     .required('No password provided')
     .min(8, 'Password is too short - should be 8 chars minimum')
-    .matches(/[a-zA-Z]/, 'Password can only contain Latin letters'),
+    .max(20, 'Password is too long - should not exceed 20 chars')
+    .matches(
+      /^[a-zA-Z0-9]+$/,
+      'Password can only contain Latin letters and numbers'
+    ),
 });
 
 export const RegistrationSchema = Yup.object().shape({
@@ -33,5 +37,8 @@ export const RegistrationSchema = Yup.object().shape({
   password: Yup.string()
     .required('No password provided')
     .min(8, 'Password is too short - should be 8 chars minimum')
-    .matches(/[a-zA-Z]/, 'Password can contain only Latin letters'),
+    .matches(
+      /^[a-zA-Z0-9]+$/,
+      'Password can contain only Latin letters and numbers'
+    ),
 });
