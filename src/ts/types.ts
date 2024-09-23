@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export type Props = {
   children: React.ReactNode;
@@ -45,7 +45,7 @@ export interface Contact {
 }
 
 export interface ContactsState {
-  items: Contact[];
+  data: Contact[];
   loading: boolean;
   error: null | string;
 }

@@ -1,15 +1,15 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   fetchContacts,
   addContact,
   deleteContact,
   editContact,
-} from './operations';
-import { logOut } from '../auth/operations';
-import { ContactsState, Contact } from '../../ts/types';
+} from "./operations";
+import { logOut } from "../auth/operations";
+import { ContactsState, Contact } from "../../ts/types";
 
 const initialState: ContactsState = {
-  items: [],
+  data: [],
   loading: false,
   error: null,
 };
@@ -28,16 +28,16 @@ const handleRejected = (
 };
 
 const contactsSlice = createSlice({
-  name: 'contacts',
+  name: "contacts",
   initialState,
   reducers: {},
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
       .addCase(fetchContacts.pending, handlePending)
       .addCase(
         fetchContacts.fulfilled,
         (state, action: PayloadAction<Contact[]>) => {
-          state.items = action.payload;
+          state.data = action.payload;
           state.loading = false;
         }
       )
@@ -46,7 +46,7 @@ const contactsSlice = createSlice({
       .addCase(
         addContact.fulfilled,
         (state, action: PayloadAction<Contact>) => {
-          state.items.push(action.payload);
+          state.data.push(action.payload);
           state.loading = false;
         }
       )
@@ -55,8 +55,8 @@ const contactsSlice = createSlice({
       .addCase(
         deleteContact.fulfilled,
         (state, action: PayloadAction<Contact>) => {
-          state.items = state.items.filter(
-            item => item.id !== action.payload.id
+          state.data = state.data.filter(
+            (item) => item.id !== action.payload.id
           );
           state.loading = false;
         }
@@ -66,18 +66,18 @@ const contactsSlice = createSlice({
       .addCase(
         editContact.fulfilled,
         (state, action: PayloadAction<Contact>) => {
-          const index = state.items.findIndex(
-            item => item.id === action.payload.id
+          const index = state.data.findIndex(
+            (item) => item.id === action.payload.id
           );
           if (index !== -1) {
-            state.items[index] = action.payload;
+            state.data[index] = action.payload;
           }
           state.loading = false;
         }
       )
       .addCase(editContact.rejected, handleRejected)
-      .addCase(logOut.fulfilled, state => {
-        state.items = [];
+      .addCase(logOut.fulfilled, (state) => {
+        state.data = [];
         state.loading = false;
         state.error = null;
       });

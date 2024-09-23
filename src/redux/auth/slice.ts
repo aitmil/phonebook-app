@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { register, logIn, logOut, refreshUser } from './operations';
-import { AuthState } from '../../ts/types';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { register, logIn, logOut, refreshUser } from "./operations";
+import { AuthState } from "../../ts/types";
 
 const initialState: AuthState = {
   user: {
@@ -28,10 +28,10 @@ const handleRejected = (
 };
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {},
-  extraReducers: builder =>
+  extraReducers: (builder) =>
     builder
       .addCase(register.pending, handlePending)
       .addCase(
@@ -53,7 +53,7 @@ const authSlice = createSlice({
       })
       .addCase(logIn.rejected, handleRejected)
       .addCase(logOut.pending, handlePending)
-      .addCase(logOut.fulfilled, state => {
+      .addCase(logOut.fulfilled, (state) => {
         state.user = {
           name: null,
           email: null,
@@ -63,12 +63,12 @@ const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(logOut.rejected, handleRejected)
-      .addCase(refreshUser.pending, state => {
+      .addCase(refreshUser.pending, (state) => {
         state.isRefreshing = true;
       })
       .addCase(
         refreshUser.fulfilled,
-        (state, action: PayloadAction<AuthState['user']>) => {
+        (state, action: PayloadAction<AuthState["user"]>) => {
           state.user = action.payload;
           state.isLoggedIn = true;
           state.isRefreshing = false;
