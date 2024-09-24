@@ -40,9 +40,6 @@ export const logIn = createAsyncThunk<
   try {
     const res = await axiosInstance.post("/auth/login", userData);
     setAuthHeader(res.data.data.accessToken);
-    console.log(
-      `login: ${axiosInstance.defaults.headers.common.Authorization}`
-    );
     return res.data.data;
   } catch (error: any) {
     return thunkAPI.rejectWithValue(
@@ -66,7 +63,7 @@ export const logOut = createAsyncThunk<void, void, { rejectValue: string }>(
 );
 
 export const refreshUser = createAsyncThunk<
-  AuthState["user"],
+  { user: AuthState["user"]; accessToken: string },
   void,
   { state: { auth: AuthState }; rejectValue: string }
 >(
@@ -78,8 +75,10 @@ export const refreshUser = createAsyncThunk<
     if (token) {
       setAuthHeader(token);
       try {
-        const res = await axiosInstance.post("/auth/refresh");
-        return res.data.data;
+        const response = await axiosInstance.post("/auth/refresh");
+        const { user, accessToken } = response.data.data;
+        setAuthHeader(accessToken);
+        return { user, accessToken };
       } catch (error: any) {
         return thunkAPI.rejectWithValue(
           error.response?.data?.message || error.message
