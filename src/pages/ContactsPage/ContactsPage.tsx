@@ -1,16 +1,20 @@
-import { useEffect, lazy, Suspense } from 'react';
-import PageTitle from '../../components/PageTitle/PageTitle';
-import ContactEditor from '../../components/ContactEditor/ContactEditor';
-import SearchBox from '../../components/SearchBox/SearchBox';
-import Loader from '../../components/Loader/Loader';
-import Error from '../../components/Error/Error';
-import { fetchContacts } from '../../redux/contacts/operations';
-import { selectError, selectLoading } from '../../redux/contacts/selectors';
-import { useAppDispatch, useAppSelector } from '../../ts/hooks';
-import css from './ContactsPage.module.css';
+import { useEffect, lazy, Suspense } from "react";
+import { IoMdAdd } from "react-icons/io";
+
+import PageTitle from "../../components/PageTitle/PageTitle";
+import SearchBox from "../../components/SearchBox/SearchBox";
+import Loader from "../../components/Loader/Loader";
+import Error from "../../components/Error/Error";
+
+import { useAppDispatch, useAppSelector } from "../../ts/hooks";
+import { fetchContacts } from "../../redux/contacts/operations";
+import { selectError, selectLoading } from "../../redux/contacts/selectors";
+import { openAddModal } from "../../redux/modal/slice";
+
+import css from "./ContactsPage.module.css";
 
 const ContactList = lazy(
-  () => import('../../components/ContactList/ContactList')
+  () => import("../../components/ContactList/ContactList")
 );
 
 export default function ContactsPage() {
@@ -24,18 +28,23 @@ export default function ContactsPage() {
 
   return (
     <main className={css.container}>
-      <div className={css.boxEdit}>
-        <PageTitle>Your contacts</PageTitle>
-        <ContactEditor />
+      <div className={css.box}>
+        <PageTitle>Contacts</PageTitle>
+        <button
+          type="button"
+          className={css.btn}
+          onClick={() => dispatch(openAddModal())}
+        >
+          <IoMdAdd size={48} />
+          <span className="visually-hidden">Add Contact</span>
+        </button>
       </div>
-      <div className={css.wrapper}>
-        <SearchBox />
-        {isLoading && <Loader />}
-        {isError && <Error />}
-        <Suspense fallback={<Loader />}>
-          <ContactList />
-        </Suspense>
-      </div>
+      <SearchBox />
+      {isLoading && <Loader />}
+      {isError && <Error />}
+      <Suspense fallback={<Loader />}>
+        <ContactList />
+      </Suspense>
     </main>
   );
 }

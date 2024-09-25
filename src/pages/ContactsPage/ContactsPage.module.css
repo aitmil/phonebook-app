@@ -1,24 +1,25 @@
 .container {
   background-color: var(--background-light-color);
-  padding-top: 140px;
-  display: flex;
-  gap: 24px;
-  padding-left: 48px;
-  padding-right: 48px;
-  min-height: 100vh;
+  padding: 110px 16px 24px;
 }
 
-.boxEdit {
+.box {
   display: flex;
-  flex-direction: column;
   gap: 24px;
+  justify-content: center;
+}
+
+.btn {
+  display: flex;
   align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: inherit;
+  background-color: transparent;
+  border: none;
+  transition: transform 0.2s var(--transform);
 }
 
-.wrapper {
-  width: calc(100vw - 472px);
-}
-
-.title {
-  align-self: start;
+.btn:hover {
+  transform: scale(1.2);
 }
