@@ -1,9 +1,8 @@
 .errorBox {
   display: flex;
   flex-direction: column;
-  gap: 24px;
   justify-content: center;
-  width: calc(100vw - 472px);
+  gap: 24px;
 }
 
 .iconMain {
@@ -12,7 +11,18 @@
 
 .error {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 12px;
-  justify-content: center;
+}
+
+.text {
+  text-align: center;
+}
+
+@media (min-width: 720px) {
+  .error {
+    flex-direction: row;
+  }
 }
